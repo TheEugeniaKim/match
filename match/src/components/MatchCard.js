@@ -1,15 +1,13 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 
 class MatchCard extends React.Component {
 
   render() {
     return (
-      <Card>
-        <div className="icon">
-          
-        </div>
-      </Card>
+      <div className="card">
+        <h3>Card 1 </h3>
+      </div>
     )
   }
 }

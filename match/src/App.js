@@ -5,11 +5,11 @@ import GameBoard from './components/GameBoard';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Match!</h1> 
-      </header>
       <body>
-          <GameBoard />
+        <h1>Welcome to Match!</h1> 
+          <div className="board">
+            <GameBoard />
+          </div>
       </body>
     </div>
   );

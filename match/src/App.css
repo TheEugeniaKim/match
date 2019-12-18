@@ -1,5 +1,27 @@
 * {
-  background-color: lightslategray;
+  background-color: #778899;
   text-align: center;
+  margin: 0; 
+  padding: 0; 
+  box-sizing: inherit;
 }
 
+.board {
+  border: 5px solid purple;
+  height: 500px;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+  margin: 3rem;
+}
+
+.card {
+  border: 4px solid black;
+  height: 30%; 
+  width: 10%;
+  padding: 2rem 4rem; 
+  box-sizing: border-box;
+  box-shadow: darkgray;
+  margin: 1rem;
+  background-color: cyan;
+  text-align: center;
+}

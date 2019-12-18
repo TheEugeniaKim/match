@@ -1,6 +1,5 @@
 import React from 'react'
 import MatchCard from './MatchCard'
-import { Icon } from 'semantic-ui-react'
 
 class GameBoard extends React.Component {
 	
@@ -8,7 +7,7 @@ class GameBoard extends React.Component {
 
 	render(){
 		return (
-			<div className="board">
+			<div>
 				<h2> This is the game board area </h2>
 				<MatchCard />
 			</div>
