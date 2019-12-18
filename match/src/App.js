@@ -7,11 +7,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Welcome to Match!</h1> 
-        
-        <div>
-          <GameBoard />
-        </div>
       </header>
+      <body>
+          <GameBoard />
+      </body>
     </div>
   );
 }
