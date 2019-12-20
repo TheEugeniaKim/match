@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
 
 class MatchCard extends React.Component {
 
