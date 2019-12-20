@@ -1,16 +1,12 @@
 import React from 'react';
 import './App.css';
-import GameBoard from './components/GameBoard';
+import GameArea from './components/GameArea';
 
 function App() {
   return (
     <div className="App">
-      <body>
-        <h1>Welcome to Match!</h1> 
-          <div className="board">
-            <GameBoard />
-          </div>
-      </body>
+      <h1>Welcome to Match!</h1> 
+      <GameArea />  
     </div>
   );
 }

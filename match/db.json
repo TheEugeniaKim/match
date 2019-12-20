@@ -1,12 +1,14 @@
 {
   "cards": [
     {
+      "id": 1,
       "name":"beaver",
-      "symbol": "../card_images/beaver.png"
+      "symbol": "/card_images/beaver.png"
     },
     {
+      "id": 2,
       "name":"beaver",
-      "symbol": "../card_images/beaver.png"
+      "symbol": "/card_images/beaver.png"
     }
   ]
 }

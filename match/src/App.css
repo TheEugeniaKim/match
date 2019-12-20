@@ -25,3 +25,8 @@
   background-color: cyan;
   text-align: center;
 }
+
+.symbol {
+  height: 100%; 
+  align-self: auto;
+}
