@@ -13,16 +13,16 @@
   justify-content: space-between;  
   border: 5px solid purple;
   height: 100%;
-  padding: 2rem 4rem;
+  padding: 5rem;
   margin: 3rem;
 }
 
 .card {
-  border: 4px solid black;
-  margin: 5%;
+  border: 10px solid black;
+  margin: 3%;
   height: 100%; 
   width: 100%;
-  padding: 7%; 
+  padding: 5%; 
   box-sizing: border-box;
   box-shadow: greenyellow;
   background-color: #98e2ed;
@@ -34,3 +34,13 @@
   margin-top: 10%;
 }
 
+.card-back { 
+  border: 10px solid black;
+  margin: 3%;
+  height: 100%; 
+  width: 100%;
+  padding: 5%; 
+  box-sizing: border-box;
+  box-shadow: greenyellow;
+  background-color: grey;
+}

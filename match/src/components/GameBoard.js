@@ -2,6 +2,10 @@ import React from 'react'
 import MatchCard from './MatchCard'
 
 class GameBoard extends React.Component {
+
+	state = {
+
+	}
 	
 	shuffleCards = (array) => {
 		for (var i = array.length - 1; i>0; i-- ){
@@ -14,19 +18,16 @@ class GameBoard extends React.Component {
 	
 	render(){
 		let deck = this.shuffleCards(this.props.cards)
-			return(this.props.cards.map(card => {
-				return (
-					<MatchCard 
-						name={card.name} 
-						symbol={card.symbol}
-						key={card.id}
-					/>
-				)
-			})
+		return(this.props.cards.map(card => {
+			return (
+				<MatchCard 
+					name={card.name} 
+					symbol={card.symbol}
+					key={card.id}
+				/>
 			)
-	
+		}))
 	}
-
 }
 
 export default GameBoard
