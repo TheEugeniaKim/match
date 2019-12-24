@@ -6,7 +6,7 @@ class MatchCard extends React.Component {
     console.log("props", this.props)
     return (
       <div className="card">
-        <h3> {this.props.name} </h3>
+        <h3 className="card-text"> {this.props.name} </h3>
         <img src={this.props.symbol} alt={this.props.name} className="symbol" /> 
       </div>
     )

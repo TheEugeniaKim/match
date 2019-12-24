@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <h1>Welcome to Match!</h1> 
       <GameArea />  
+      <footer>"Icon made by Freepik from www.flaticon.com"</footer>
     </div>
   );
 }

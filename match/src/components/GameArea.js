@@ -12,19 +12,17 @@ class GameArea extends React.Component {
 	}
 
 	fetchCards = () => {
-		let url= 'http://localhost:3001/cards'
+		let url= 'http://localhost:3000/cards'
 		fetch(url)
 		.then(response => response.json())
 		.then(cards => this.setState({
-			cards: [...cards]
+			cards: [...cards,...cards]
 		}))
 	}
 
   render () {
-    console.log("state", this.state.cards)
     return(
       <div className="board">
-        <h1>This is the game area</h1>
         <GameBoard cards = {this.state.cards} />
       </div>
     )
