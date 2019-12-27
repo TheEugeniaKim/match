@@ -20,18 +20,22 @@
 .card {
   border: 10px solid black;
   margin: 3%;
-  height: 100%; 
+  height: 150%; 
   width: 100%;
   padding: 5%; 
   box-sizing: border-box;
   box-shadow: greenyellow;
   background-color: #98e2ed;
+  transition: transform 1s; 
+  
 }
 
 .symbol {
-  height: 100px; 
+  height: 50%; 
+  width: 50%;
   border-radius: 60%;
   margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .card-back { 

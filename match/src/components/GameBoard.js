@@ -4,29 +4,27 @@ import MatchCard from './MatchCard'
 class GameBoard extends React.Component {
 
 	state = {
+		flippedCards: [], 
+		match: 0 
+	}
 
-	}
-	
-	shuffleCards = (array) => {
-		for (var i = array.length - 1; i>0; i-- ){
-			var j = Math.floor(Math.random() * (i + 1))
-			var temp = array[i]
-			array[i] = array[j]
-			array[j] = temp 
-		}
-	}
+	setFlippedCards = (cardObj) => {
+		return this.setState({
+			flipCards: [...cardObj]
+		})	
+}
 	
 	render(){
-		let deck = this.shuffleCards(this.props.cards)
-		return(this.props.cards.map(card => {
+		return this.props.cards.map(card => {
 			return (
 				<MatchCard 
+					setFlippedCards={this.setFlippedCards}
 					name={card.name} 
 					symbol={card.symbol}
 					key={card.id}
 				/>
 			)
-		}))
+		})
 	}
 }
 
