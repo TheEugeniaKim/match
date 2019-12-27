@@ -6,19 +6,17 @@ class MatchCard extends React.Component {
     front: false
   }
 
-  handleClick = (id, name) => { 
-    let cardObj = {id,name}
-    this.props.setFlippedCards(cardObj)
+  handleClick = (id) => { 
+    this.props.setFlippedCards(id)
 
     return this.setState({
       front: !this.state.front
     })
   }
 
-  // this.handleClick(this.props.id, this.props.name)
   render() {
     return (
-      <div onClick={null}>
+      <div onClick={this.handleClick(this.props.id)}>
         <div className="card">
           <h3 className="card-text"> { this.state.front ? this.props.name : "" } </h3>
           <img src={this.state.front ? this.props.symbol : "/question.png"} alt={this.props.name} className="symbol" /> 

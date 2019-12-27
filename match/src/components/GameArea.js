@@ -1,11 +1,9 @@
 import React from 'react'
 import GameBoard from './GameBoard'
+import {connect} from 'react-redux'
+import {renderCards} from '../redux/actions'
 
 class GameArea extends React.Component {
-
-  state = {
-		cards: [] 
-	}
 
 	componentDidMount() {
 		return this.fetchCards()
@@ -18,7 +16,6 @@ class GameArea extends React.Component {
 		}
 		return array 
 	}
-	
  
 	fetchCards = () => {
 		let url= 'http://localhost:3000/cards'
@@ -26,9 +23,7 @@ class GameArea extends React.Component {
 		.then(response => response.json())
 		.then(array => {
 			const cards = [...array]
-			this.setState({
-				cards: this.shuffleCards(cards)
-			})
+			this.props.renderCards(this.shuffleCards(cards))
 		})
 	}
 
@@ -38,10 +33,16 @@ class GameArea extends React.Component {
         <GameBoard cards={this.state.cards} />
       </div>
     )
-    
-  }
-
-
+	}
 }
 
-export default GameArea
+
+function mapStateToProps(state){
+	return {
+		cards: state.cards 
+	}
+}
+
+const connectedGameArea = connect(mapStateToProps, {renderCards})(GameArea)
+
+export default connectedGameArea

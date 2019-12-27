@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import GameArea from './components/GameArea';
+import {connect} from 'react-redux'
 
 function App() {
   return (
@@ -13,4 +14,8 @@ function App() {
   );
 }
 
-export default App;
+
+
+const connectedApp = connect(null, null)(App)
+
+export default connectedApp;

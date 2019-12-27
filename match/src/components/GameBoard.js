@@ -8,9 +8,10 @@ class GameBoard extends React.Component {
 		match: 0 
 	}
 
-	setFlippedCards = (cardObj) => {
+	setFlippedCards = (id) => {
+		let flippedCard = this.props.cards.filter(card => card.id === id)
 		return this.setState({
-			flipCards: [...cardObj]
+			flippedCard: [...flippedCard]
 		})	
 }
 	
