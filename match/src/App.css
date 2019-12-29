@@ -8,34 +8,35 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: minmax(auto, auto);
+  grid-template-columns: repeat(8, minmax(90px, 1fr));
+  grid-template-rows: repeat(4, minmax(50px, 1fr));
   grid-gap: 1rem;
   justify-content: space-between;  
   border: 5px solid purple;
   height: 100%;
   padding: 4rem;
-  margin: 4rem;
 }
 
 .card {
-  border: 5px solid black;
+  border: 3px solid black;
   margin: 3%;
-  height: 350%; 
+  height: 100%; 
   width: 100%;
   padding: 5%; 
   box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   background-color: #98e2ed;
   transition: transform 1s; 
   border-radius: 10%;
+  
 }
 
 .symbol {
   height: 50%; 
   width: 50%;
-  border-radius: 60%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  border-radius: 50%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .card-back { 

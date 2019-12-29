@@ -4,21 +4,30 @@ import {flipCard} from '../redux/actions'
 
 class MatchCard extends React.Component {
   
-  handleClick = (id) => { 
+  handleClick = () => { 
+    
     return (null)
   }
 
+  checkTwoCardsFlipped = () => {
+    if (this.props.flippedCards.length < 2) {
+      return false 
+    }
+    else {return false}
+  }
+
   checkIfCardFlipped = () => {
-    if (this.props.cards.map(flippedCard => flippedCard.id === this.props.id)) {
+    if (this.props.flippedCards.map(flippedCard => flippedCard.id === this.props.id)) {
       return true 
     }
   }
 
   render() {
+    console.log("flippedCards", this.props.flippedCards)
     return (
-      <div onClick={this.handleClick(this.props.id)}>
+      <div onClick={this.handleClick()}>
         <div className="card">
-          <h3 className="card-text"> {  this.props.name  } </h3>
+          <h3 className="card-text"> { this.checkIfCardFlipped ? this.props.name : "" } </h3>
           <img src={ this.props.symbol } alt={this.props.name} className="symbol" /> 
         </div>
       </div>
