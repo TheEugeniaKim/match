@@ -1,25 +1,14 @@
 import React from 'react'
 import MatchCard from './MatchCard'
+import {connect} from 'react-redux'
 
 class GameBoard extends React.Component {
-
-	state = {
-		flippedCards: [], 
-		match: 0 
-	}
-
-	setFlippedCards = (id) => {
-		let flippedCard = this.props.cards.filter(card => card.id === id)
-		return this.setState({
-			flippedCard: [...flippedCard]
-		})	
-}
 	
 	render(){
+		console.log("gameboard", this.props.cards)
 		return this.props.cards.map(card => {
 			return (
 				<MatchCard 
-					setFlippedCards={this.setFlippedCards}
 					name={card.name} 
 					symbol={card.symbol}
 					key={card.id}
@@ -29,4 +18,12 @@ class GameBoard extends React.Component {
 	}
 }
 
-export default GameBoard
+function mapStateToProps(state){
+	return {
+		cards: state.cards 
+	}
+}
+
+const connectedGameBoard = connect(mapStateToProps, null)(GameBoard)
+
+export default connectedGameBoard

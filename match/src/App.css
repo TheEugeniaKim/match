@@ -8,26 +8,26 @@
 
 .board {
   display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: minmax(auto, auto);
+  grid-gap: 1rem;
   justify-content: space-between;  
   border: 5px solid purple;
   height: 100%;
-  padding: 5rem;
-  margin: 3rem;
+  padding: 4rem;
+  margin: 4rem;
 }
 
 .card {
-  border: 10px solid black;
+  border: 5px solid black;
   margin: 3%;
-  height: 150%; 
+  height: 350%; 
   width: 100%;
   padding: 5%; 
   box-sizing: border-box;
-  box-shadow: greenyellow;
   background-color: #98e2ed;
   transition: transform 1s; 
-  
+  border-radius: 10%;
 }
 
 .symbol {

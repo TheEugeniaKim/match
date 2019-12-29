@@ -22,15 +22,16 @@ class GameArea extends React.Component {
 		fetch(url)
 		.then(response => response.json())
 		.then(array => {
-			const cards = [...array]
-			this.props.renderCards(this.shuffleCards(cards))
+			let cards = this.shuffleCards(array)
+			this.props.renderCards(cards)
 		})
 	}
 
   render () {
+		console.log('state', this.props.cards)
 		return(
       <div className="board">
-        <GameBoard cards={this.state.cards} />
+        <GameBoard />
       </div>
     )
 	}
@@ -39,7 +40,7 @@ class GameArea extends React.Component {
 
 function mapStateToProps(state){
 	return {
-		cards: state.cards 
+		flippedCards: state.flippedCards,
 	}
 }
 

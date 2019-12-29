@@ -1,29 +1,38 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {flipCard} from '../redux/actions'
 
 class MatchCard extends React.Component {
-
-  state = {
-    front: false
+  
+  handleClick = (id) => { 
+    return (null)
   }
 
-  handleClick = (id) => { 
-    this.props.setFlippedCards(id)
-
-    return this.setState({
-      front: !this.state.front
-    })
+  checkIfCardFlipped = () => {
+    if (this.props.cards.map(flippedCard => flippedCard.id === this.props.id)) {
+      return true 
+    }
   }
 
   render() {
     return (
       <div onClick={this.handleClick(this.props.id)}>
         <div className="card">
-          <h3 className="card-text"> { this.state.front ? this.props.name : "" } </h3>
-          <img src={this.state.front ? this.props.symbol : "/question.png"} alt={this.props.name} className="symbol" /> 
+          <h3 className="card-text"> {  this.props.name  } </h3>
+          <img src={ this.props.symbol } alt={this.props.name} className="symbol" /> 
         </div>
       </div>
     )
   }
 }
 
-export default MatchCard 
+function mapStateToProps(state){
+	return {
+    cards: state.cards,
+    flippedCards: state.flippedCards
+	}
+}
+
+const connectedMatchCard = connect(mapStateToProps, {flipCard})(MatchCard)
+
+export default connectedMatchCard 
