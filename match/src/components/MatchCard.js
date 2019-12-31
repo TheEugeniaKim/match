@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addFlippedCard} from '../redux/actions'
+import {addFlippedCard, removeFlippedCard} from '../redux/actions'
 
 class MatchCard extends React.Component {
   
@@ -9,10 +9,20 @@ class MatchCard extends React.Component {
     console.log('click', cardObj)
     console.log(this.checkIfCardFlipped())
     if (this.checkTwoCardsFlipped() === false) {
-      return this.props.addFlippedCard(cardObj)
+      if (this.checkIfCardFlipped(cardObj.id)){
+        return this.props.removeFlippedCard(cardObj)
+      }
+      else {
+        return this.props.addFlippedCard(cardObj)
+      }
     }
     else {
-      return null 
+      if (this.checkIfCardFlipped(cardObj.id)){
+        return this.props.removeFlippedCard(cardObj)
+      }
+      else {
+        return null 
+      }
     }
   }
 
@@ -30,7 +40,7 @@ class MatchCard extends React.Component {
     // console.log("flippedCards", this.props.flippedCards)
     // console.log('checkflip', this.checkIfCardFlipped(this.props.id))
     return (
-      <div className="card" onClick={() => this.handleClick()}>
+      <div className="card" onClick={() => this.handleClick(this.props.id)}>
         <h3 className="card-text"> { this.checkIfCardFlipped(this.props.id) ? this.props.name : "" } </h3>
         <img src={ this.checkIfCardFlipped(this.props.id) ? this.props.symbol : './question.png'} alt={this.props.name} className="symbol" /> 
       </div>
@@ -45,6 +55,6 @@ function mapStateToProps(state){
 	}
 }
 
-const connectedMatchCard = connect(mapStateToProps, {addFlippedCard})(MatchCard)
+const connectedMatchCard = connect(mapStateToProps, {addFlippedCard, removeFlippedCard})(MatchCard)
 
 export default connectedMatchCard 

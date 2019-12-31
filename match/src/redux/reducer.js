@@ -11,8 +11,10 @@ function reducer(prevState = defaultState, action){
       return {...prevState, 
         flippedCards: [...prevState.flippedCards, action.payload]
       }
-    // case "REMOVE_FLIPPED_CARD":
-    //   return {...prevState, flippedCards: }
+    case "REMOVE_FLIPPED_CARD":
+      return {...prevState, 
+        flippedCards: prevState.flippedCards.filter(card => card !== action.payload)
+      }
     default: 
       return prevState
   }
