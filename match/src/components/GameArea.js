@@ -28,7 +28,6 @@ class GameArea extends React.Component {
 	}
 
   render () {
-		console.log('state', this.props.cards)
 		return(
       <div className="board">
         <GameBoard />
