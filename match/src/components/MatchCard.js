@@ -1,27 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addFlippedCard, removeFlippedCard} from '../redux/actions'
+import {addFlippedCard, removeFlippedCard, match} from '../redux/actions'
 
 class MatchCard extends React.Component {
   
   handleClick = () => { 
     let cardObj = this.props.cards.find(card => card.id === this.props.id)
-    console.log('click', cardObj)
-    console.log(this.checkIfCardFlipped())
-    if (this.checkTwoCardsFlipped() === false) {
+    if (this.props.flippedCards.length === 0) {
+      return this.props.addFlippedCard(cardObj)
+    }
+    else if (this.props.flippedCards.length === 1) {
       if (this.checkIfCardFlipped(cardObj.id)){
         return this.props.removeFlippedCard(cardObj)
       }
       else {
-        return this.props.addFlippedCard(cardObj)
+        this.props.addFlippedCard(cardObj)
+        return setTimeout(
+          () =>{
+            this.executeMatch(cardObj)
+          },
+          1000
+        )
       }
     }
-    else {
-      if (this.checkIfCardFlipped(cardObj.id)){
+    else if (this.props.flippedCards.length >= 2 ) {
+      if (this.checkIfCardFlipped(cardObj.id)) {
         return this.props.removeFlippedCard(cardObj)
-      }
-      else {
-        return null 
       }
     }
   }
@@ -31,14 +35,25 @@ class MatchCard extends React.Component {
   }
 
   checkIfCardFlipped = (id) => {
-    return this.props.flippedCards.some(flippedCard => flippedCard.id === id)
+    return this.props.flippedCards.some(flippedCard => flippedCard.id === id) ? true : false 
+  }
 
+  executeMatch(cardObj) {
+    if (this.props.flippedCards[0].name === cardObj.name) {
+      return this.props.match(cardObj.name)
+    }
+    else {
+      return null 
+    }
   }
 
   render() {
-    // console.log('card', this.props.card)
-    // console.log("flippedCards", this.props.flippedCards)
+    console.log("flippedCards", this.props.flippedCards)
+    console.log('cards', this.props.cards)
     // console.log('checkflip', this.checkIfCardFlipped(this.props.id))
+    // console.log('match', this.matchCheck())
+    
+    
     return (
       <div className="card" onClick={() => this.handleClick(this.props.id)}>
         <h3 className="card-text"> { this.checkIfCardFlipped(this.props.id) ? this.props.name : "" } </h3>
@@ -55,6 +70,10 @@ function mapStateToProps(state){
 	}
 }
 
-const connectedMatchCard = connect(mapStateToProps, {addFlippedCard, removeFlippedCard})(MatchCard)
+const connectedMatchCard = connect(mapStateToProps, {
+  addFlippedCard, 
+  removeFlippedCard, 
+  match
+})(MatchCard)
 
 export default connectedMatchCard 

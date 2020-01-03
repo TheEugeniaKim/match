@@ -15,6 +15,11 @@ function reducer(prevState = defaultState, action){
       return {...prevState, 
         flippedCards: prevState.flippedCards.filter(card => card !== action.payload)
       }
+    case "MATCH": 
+      return {prevState, 
+        cards: prevState.cards.filter(card => card.name !== action.payload), 
+        flippedCards: []
+      }
     default: 
       return prevState
   }

@@ -9,3 +9,7 @@ export function addFlippedCard(card) {
 export function removeFlippedCard(card) {
   return {type: "REMOVE_FLIPPED_CARD", payload: card}
 }
+
+export function match(cardName) {
+  return {type: "MATCH", payload: cardName}
+}
