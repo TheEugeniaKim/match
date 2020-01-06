@@ -20,7 +20,7 @@
 .card {
   border: 3px solid black;
   margin: 3%;
-  height: 120%; 
+  height: 110%; 
   width: 100%;
   padding: 5%; 
   box-sizing: border-box;
@@ -32,12 +32,11 @@
 }
 
 .symbol {
-  height: 50%; 
-  width: 50%;
+  height: 5em; 
+  width: 5em;
   border-radius: 50%;
-  margin-top: 5%;
-  margin-bottom: 5%;
   align-self: center;
+  margin-top: 3%;
 }
 
 .card-back { 
@@ -50,3 +49,4 @@
   box-shadow: greenyellow;
   background-color: grey;
 }
+

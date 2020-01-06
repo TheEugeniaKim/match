@@ -16,7 +16,7 @@ class MatchCard extends React.Component {
       else {
         this.props.addFlippedCard(cardObj)
         return setTimeout(
-          () =>{
+          () => {
             this.executeMatch(cardObj)
           },
           1000
@@ -56,7 +56,9 @@ class MatchCard extends React.Component {
     
     return (
       <div className="card" onClick={() => this.handleClick(this.props.id)}>
-        <h3 className="card-text"> { this.checkIfCardFlipped(this.props.id) ? this.props.name : "" } </h3>
+        <h3 className="card-text" style={this.checkIfCardFlipped(this.props.id) ? {color: 'black'} : {color: '#778899'}}> 
+          { this.checkIfCardFlipped(this.props.id) ? this.props.name : "BLANK" } 
+        </h3>
         <img src={ this.checkIfCardFlipped(this.props.id) ? this.props.symbol : './question.png'} alt={this.props.name} className="symbol" /> 
       </div>
     )

@@ -1,10 +1,23 @@
 import React from 'react'
 import GameBoard from './GameBoard'
+import DirectionsModal from './DirectionsModal'
 import {connect} from 'react-redux'
 import {renderCards} from '../redux/actions'
+// import {showDirections} from '../redux/actions'
+
 
 class GameArea extends React.Component {
 
+	state = {
+    show: true
+	}
+
+	showDirections = event => {
+    this.setState({
+      show: !this.state.show 
+    })
+	}
+	
 	componentDidMount() {
 		return this.fetchCards()
 	}
@@ -29,9 +42,19 @@ class GameArea extends React.Component {
 
   render () {
 		return(
-      <div className="board">
-        <GameBoard />
-      </div>
+			<div>
+				<h1>Welcome to Match!</h1> 
+
+      	<button onClick={e => {
+          this.showDirections()
+         }}>Directions</button>
+
+				<DirectionsModal onClose={this.showDirections} show={this.state.show} > </DirectionsModal>
+				{/* <div className="board"> 
+					<GameBoard />
+				</div> */}
+				
+			</div>
     )
 	}
 }
