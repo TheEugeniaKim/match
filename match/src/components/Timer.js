@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TimesUp from './TimesUp'
 
 export default class Timer extends Component {
   state = {
@@ -37,7 +38,7 @@ export default class Timer extends Component {
       return (
           <div>
               { minutes === 0 && seconds === 0
-                  ? <h1>Time's Up! You Lost!</h1>
+                  ? <TimesUp />
                   : <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
               }
           </div>
