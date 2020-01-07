@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {directions} from '../redux/actions'
 
 class DirectionsModal extends React.Component {
   
   onClose = e => {
-    this.props.onClose && this.props.onClose(e);
+    return this.props.directions()
   }
   
   render(){
@@ -42,6 +43,6 @@ function mapStateToProps(state){
 	}
 }
 
-const connectedDirectionsModal = connect(mapStateToProps, null)(DirectionsModal)
+const connectedDirectionsModal = connect(mapStateToProps, {directions})(DirectionsModal)
 
 export default connectedDirectionsModal

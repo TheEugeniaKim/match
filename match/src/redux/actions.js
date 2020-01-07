@@ -14,6 +14,6 @@ export function match(cardName) {
   return {type: "MATCH", payload: cardName}
 }
 
-// export function showDirections() {
-//   return {type: "SHOW_DIRECTIONS"}
-// }
+export function directions() {
+  return {type: "DIRECTIONS"}
+}

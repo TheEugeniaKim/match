@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 class GameBoard extends React.Component {
 	
 	render(){
+		// console.log('cards', this.props.cards)
 		return this.props.cards.map(card => {
 			return (
 				<MatchCard 

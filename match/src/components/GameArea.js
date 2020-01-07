@@ -1,22 +1,13 @@
 import React from 'react'
 import GameBoard from './GameBoard'
 import DirectionsModal from './DirectionsModal'
+import Timer from './Timer'
 import {connect} from 'react-redux'
 import {renderCards} from '../redux/actions'
-// import {showDirections} from '../redux/actions'
+import {directions} from '../redux/actions'
 
 
 class GameArea extends React.Component {
-
-	state = {
-    show: true
-	}
-
-	showDirections = event => {
-    this.setState({
-      show: !this.state.show 
-    })
-	}
 	
 	componentDidMount() {
 		return this.fetchCards()
@@ -44,13 +35,19 @@ class GameArea extends React.Component {
 		return(
 			<div>
 				<h1>Welcome to Match!</h1> 
+				<div >
+					<button className="toggle-button" onClick={e => {
+						this.props.directions()
+					}}>Directions</button>
+				</div>
+				<br/>
+				<br/>
+				<DirectionsModal show={this.props.showDirections} > </DirectionsModal>
 
-      	<button className="toggle-button" onClick={e => {
-          this.showDirections()
-         }}>Directions</button>
-				<br/>
-				<br/>
-				<DirectionsModal onClose={this.showDirections} show={this.state.show} > </DirectionsModal>
+				<div>
+					<Timer />
+				</div>
+
 				<div className="board"> 
 					<GameBoard />
 				</div>
@@ -64,9 +61,10 @@ class GameArea extends React.Component {
 function mapStateToProps(state){
 	return {
 		flippedCards: state.flippedCards,
+		showDirections: state.showDirections
 	}
 }
 
-const connectedGameArea = connect(mapStateToProps, {renderCards})(GameArea)
+const connectedGameArea = connect(mapStateToProps, {renderCards, directions})(GameArea)
 
 export default connectedGameArea
