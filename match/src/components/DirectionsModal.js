@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import '../Directions.css';
 
 class DirectionsModal extends React.Component {
   
@@ -14,17 +13,24 @@ class DirectionsModal extends React.Component {
     }
     return (
       <div className="directions">
-        <p>
-          Welcome to match! This is a memory game where you have 5 minutes to correctly match
-          the cards with the same animal by turning over cards in pairs. 
-        <br/>
-          If you run out of time you lose. 
-        <br/>
-          If you correctly match all of the cards before time runs out you win. 
-        </p>
-        <button onClick={e => {
-          this.onClose(e);
-        }} > Close </button>
+        <h2>Match Directions</h2>
+        <div className="content">
+          <p>
+            Welcome to match! This is a memory game where you have 5 minutes to correctly match
+            the cards with the same animal by turning over cards in pairs. 
+            <br/>
+            <br/>
+            Turn over the cards by clicking on the cards you want to turn over. If you run out of time you lose. 
+            <br/>
+            <br/>
+            If you correctly match all of the cards before time runs out you win. 
+          </p>
+        </div>
+        <div className="actions">
+          <button className="toggle-button" onClick={e => {
+            this.onClose(e);
+          }} > Close </button>
+        </div>
       </div>
     )
   }

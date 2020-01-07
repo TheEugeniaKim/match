@@ -45,14 +45,15 @@ class GameArea extends React.Component {
 			<div>
 				<h1>Welcome to Match!</h1> 
 
-      	<button onClick={e => {
+      	<button className="toggle-button" onClick={e => {
           this.showDirections()
          }}>Directions</button>
-
+				<br/>
+				<br/>
 				<DirectionsModal onClose={this.showDirections} show={this.state.show} > </DirectionsModal>
-				{/* <div className="board"> 
+				<div className="board"> 
 					<GameBoard />
-				</div> */}
+				</div>
 				
 			</div>
     )
