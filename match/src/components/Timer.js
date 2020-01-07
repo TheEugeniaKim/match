@@ -3,8 +3,8 @@ import TimesUp from './TimesUp'
 
 export default class Timer extends Component {
   state = {
-      minutes: 5,
-      seconds: 0,
+      minutes: 0,
+      seconds: 2,
   }
 
   componentDidMount() {

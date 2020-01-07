@@ -34,7 +34,11 @@ class GameArea extends React.Component {
   render () {
 		return(
 			<div>
-				<div className="backdrop">
+				<div>
+					{ this.props.showDirections ?
+						<div className="backdrop"></div> :
+						null
+					}
 				</div>
 				<h1>Welcome to Match!</h1> 
 					<button className="toggle-button" onClick={e => {
