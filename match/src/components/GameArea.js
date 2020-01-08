@@ -5,6 +5,7 @@ import Timer from './Timer'
 import {connect} from 'react-redux'
 import {renderCards} from '../redux/actions'
 import {directions} from '../redux/actions'
+import Winner from './Winner'
 
 
 class GameArea extends React.Component {
@@ -32,14 +33,27 @@ class GameArea extends React.Component {
 	}
 
   render () {
+		console.log('timeup', this.props.showTimesUp)
 		return(
 			<div>
-				<div>
-					{ this.props.showDirections ?
-						<div className="backdrop"></div> :
-						null
-					}
-				</div>
+				{ 
+					this.props.showDirections ?
+					<div className="backdrop"></div> :
+					null
+				}
+
+				{
+					this.props.showTimesUp ?
+					<div className="backdrop"></div> :
+					null
+				}
+
+				{
+					this.props.cards.length === 0 ?
+					<div className="backdrop"><Winner /></div> :
+					null 
+				}
+
 				<h1>Welcome to Match!</h1> 
 					<button className="toggle-button" onClick={e => {
 						this.props.directions()
@@ -48,11 +62,8 @@ class GameArea extends React.Component {
 					<br/>
 					<DirectionsModal show={this.props.showDirections} > </DirectionsModal>
 				
-
-				
 				<Timer />
 			
-
 				<div className="board"> 
 					<GameBoard />
 				</div>
@@ -65,8 +76,10 @@ class GameArea extends React.Component {
 
 function mapStateToProps(state){
 	return {
+		cards: state.cards,
 		flippedCards: state.flippedCards,
-		showDirections: state.showDirections
+		showDirections: state.showDirections,
+		showTimesUp: state.showTimesUp
 	}
 }
 

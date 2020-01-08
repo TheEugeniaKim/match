@@ -1,7 +1,9 @@
 const defaultState = {
   cards: [],
   flippedCards: [],
-  showDirections: true
+  showDirections: true,
+
+  showTimesUp: false
 }
 
 function reducer(prevState = defaultState, action){
@@ -24,6 +26,10 @@ function reducer(prevState = defaultState, action){
     case "DIRECTIONS": 
       return {...prevState, 
         showDirections: !prevState.showDirections
+      }
+    case "SHOW_TIMES_UP":
+      return {...prevState,
+        showTimesUp: !prevState.showTimesUp
       }
     default: 
       return prevState

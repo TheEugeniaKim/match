@@ -19,7 +19,7 @@ class MatchCard extends React.Component {
           () => {
             this.executeMatch(cardObj)
           },
-          1000
+          500
         )
       }
     }

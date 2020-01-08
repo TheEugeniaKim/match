@@ -17,3 +17,7 @@ export function match(cardName) {
 export function directions() {
   return {type: "DIRECTIONS"}
 }
+
+export function timesUpShow(){
+  return {type: "SHOW_TIMES_UP"}
+}

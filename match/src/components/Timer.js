@@ -3,8 +3,8 @@ import TimesUp from './TimesUp'
 
 export default class Timer extends Component {
   state = {
-      minutes: 0,
-      seconds: 2,
+    minutes: 5,
+    seconds: 0,
   }
 
   componentDidMount() {
@@ -12,25 +12,25 @@ export default class Timer extends Component {
       const { seconds, minutes } = this.state
 
       if (seconds > 0) {
-          this.setState(({ seconds }) => ({
-              seconds: seconds - 1
-          }))
+        this.setState(({ seconds }) => ({
+            seconds: seconds - 1
+        }))
       }
       if (seconds === 0) {
-          if (minutes === 0) {
-              clearInterval(this.myInterval)
-          } else {
-              this.setState(({ minutes }) => ({
-                  minutes: minutes - 1,
-                  seconds: 59
-              }))
-          }
+        if (minutes === 0) {
+            clearInterval(this.myInterval)
+        } else {
+            this.setState(({ minutes }) => ({
+                minutes: minutes - 1,
+                seconds: 59
+            }))
+        }
       } 
     }, 1000)
   }
 
   componentWillUnmount() {
-      clearInterval(this.myInterval)
+    clearInterval(this.myInterval)
   }
 
   render() {

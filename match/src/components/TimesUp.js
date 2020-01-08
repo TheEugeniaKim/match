@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {timesUpShow} from '../redux/actions'
 
-export default class TimesUp extends Component {
+class TimesUp extends Component {
 
   onClick = () => {
     window.location.reload()
+  }
+
+  componentDidMount(){
+    return this.props.timesUpShow()
   }
 
   render() {
@@ -18,3 +24,15 @@ export default class TimesUp extends Component {
     )
   }
 }
+
+
+function mapStateToProps(state){
+	return {
+    cards: state.cards,
+    showTimesUp: state.showTimesUp
+	}
+}
+
+const connectedTimesUp = connect(mapStateToProps, {timesUpShow})(TimesUp)
+
+export default connectedTimesUp
