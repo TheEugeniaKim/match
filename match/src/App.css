@@ -7,18 +7,70 @@
 }
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(8, minmax(50px, 1fr));
-  grid-template-rows: repeat(4, minmax(60px, 1fr));
-  grid-gap: 1rem;
-  justify-content: space-between;  
+  display: flex;
+  flex-wrap: wrap;
+
   border: 5px solid purple;
   height: 100%;
   padding: 4rem;
   z-index: 0;
 }
 
+
 .card {
+  position: relative;
+  height: 150px; 
+  width: 125px;
+  margin: 3%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  transform-style:preserve-3d;
+}
+
+.card-front {
+  position: absolute;
+  background-color: #98e2ed;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border: 3px solid black;
+  border-radius: 5%;
+  user-select: none; 
+  cursor: pointer;
+  transform: rotateY(-180deg);
+}
+
+.card-back {
+  position: absolute;
+  background-color: #98e2ed;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border: 3px solid black;
+  border-radius: 10%;
+  user-select: none; 
+  cursor: pointer;
+}
+
+
+.unflipped {
+  transform: rotateY(0);
+}
+
+.flipped {
+  transform: rotateY(-180deg);
+  background: transparent;
+}
+
+
+/* 
+.card:hover{ 
+  background-color: blue;
+} */
+
+.card-flip {
   border: 3px solid black;
   margin: 3%;
   height: 110%; 
@@ -27,10 +79,31 @@
   box-sizing: border-box;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   background-color: #98e2ed;
-  transition: transform 1s; 
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 10%;
-  
-}
+  user-select: none; 
+  cursor: pointer;
+  backface-visibility: hidden;
+  z-index: 1;
+  transform: rotateY(180deg)
+} 
+
+.card-no-flip { 
+  border: 3px solid black;
+  margin: 3%;
+  height: 110%; 
+  width: 100%;
+  padding: 5%; 
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #98e2ed;
+  border-radius: 10%;
+  user-select: none; 
+  cursor: pointer;
+  backface-visibility: hidden;
+  z-index: 1;
+} 
 
 .symbol {
   height: 5em; 
@@ -40,23 +113,14 @@
   margin-top: 3%;
 }
 
-.card-back { 
-  border: 10px solid black;
-  margin: 3%;
-  height: 100%; 
-  width: 100%;
-  padding: 5%; 
-  box-sizing: border-box;
-  box-shadow: greenyellow;
-  background-color: grey;
-}
+
 
 .backdrop {
   position: fixed;
   width: 200%;
   height: 200%;
   background: rgba(0,0,0,0.7);
-
+  z-index: 2;
 }
 
 .directions {
@@ -71,7 +135,7 @@
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
   opacity: 1;
   visibility: visible;
-  z-index: 1;
+  z-index: 2;
 }
 
 .directions h2 {
@@ -96,3 +160,4 @@
   font-size: 0.8rem;
   line-height: 1;
 }
+

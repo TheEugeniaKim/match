@@ -7,7 +7,6 @@ import {renderCards} from '../redux/actions'
 import {directions} from '../redux/actions'
 import Winner from './Winner'
 
-
 class GameArea extends React.Component {
 	
 	componentDidMount() {
@@ -32,8 +31,16 @@ class GameArea extends React.Component {
 		})
 	}
 
+	pauseTimer = () => {
+		if (this.props.showDirections || this.props.showTimesUp || this.props.cards.length === 0) {
+			return true 
+		} 
+		else {
+			return false 
+		}
+	}
+
   render () {
-		console.log('timeup', this.props.showTimesUp)
 		return(
 			<div>
 				{ 
@@ -62,7 +69,7 @@ class GameArea extends React.Component {
 					<br/>
 					<DirectionsModal show={this.props.showDirections} > </DirectionsModal>
 				
-				<Timer />
+				<Timer pauseTimer={this.pauseTimer()} />
 			
 				<div className="board"> 
 					<GameBoard />

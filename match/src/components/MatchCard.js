@@ -31,11 +31,11 @@ class MatchCard extends React.Component {
   }
 
   checkTwoCardsFlipped = () => {
-    return this.props.flippedCards.length < 2 ? false : true 
+    return this.props.flippedCards.length < 2
   }
 
   checkIfCardFlipped = (id) => {
-    return this.props.flippedCards.some(flippedCard => flippedCard.id === id) ? true : false 
+    return this.props.flippedCards.some(flippedCard => flippedCard.id === id)
   }
 
   executeMatch(cardObj) {
@@ -48,19 +48,22 @@ class MatchCard extends React.Component {
   }
 
   render() {
-    console.log("flippedCards", this.props.flippedCards)
-    console.log('cards', this.props.cards)
-    // console.log('checkflip', this.checkIfCardFlipped(this.props.id))
-    // console.log('match', this.matchCheck())
-    
-    
+  
     return (
-      <div className="card" onClick={() => this.handleClick(this.props.id)}>
-        <h3 className="card-text" style={this.checkIfCardFlipped(this.props.id) ? {color: 'black'} : {color: '#778899'}}> 
-          { this.checkIfCardFlipped(this.props.id) ? this.props.name : "BLANK" } 
-        </h3>
-        <img src={ this.checkIfCardFlipped(this.props.id) ? this.props.symbol : './question.png'} alt={this.props.name} className="symbol" /> 
-      </div>
+        <div className={this.checkIfCardFlipped(this.props.id) ? "card flipped" : "card unflipped"} onClick={() => this.handleClick(this.props.id)}> 
+          
+          <div className="card-front">
+            <h3  style={{color: 'black'}}> { this.props.name } </h3>
+            <img src={this.props.symbol } alt={this.props.name} className="symbol" /> 
+          </div>
+
+          <div className="card-back">
+            <h3 className="card-text" style={{color: '#778899'}}> </h3>
+            <img src={ './question.png'} alt={this.props.name} className="symbol" /> 
+          </div>
+          
+        </div>
+     
     )
   }
 }
