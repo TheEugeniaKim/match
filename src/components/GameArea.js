@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {renderCards} from '../redux/actions'
 import {directions} from '../redux/actions'
 import Winner from './Winner'
+import {cards} from '../db'
 
 class GameArea extends React.Component {
 	
@@ -13,22 +14,19 @@ class GameArea extends React.Component {
 		return this.fetchCards()
 	}
 
-	shuffleCards = (array) => {
-		let j = Math.floor(Math.random() * (array.length))
+	shuffleCards = (array) => {		
 		for (let i = array.length - 1; i > 0; i--){
-			[array[i], array[j]] = [array[j], array[i]]
+			const j = Math.floor(Math.random() * (array.length))
+			const store = array[j]
+			array[j] = array[i]
+			array[i] = store	
 		}
 		return array 
 	}
  
 	fetchCards = () => {
-		let url= 'http://localhost:3000/cards'
-		fetch(url)
-		.then(response => response.json())
-		.then(array => {
-			let cards = this.shuffleCards(array)
-			this.props.renderCards(cards)
-		})
+		let shuffledCards = this.shuffleCards(cards)
+		this.props.renderCards(shuffledCards)
 	}
 
 	pauseTimer = () => {
